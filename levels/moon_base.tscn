@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/surface/surface.gltf" type="PackedScene" id=1]
+
+[node name="Root" type="Spatial"]
+
+[node name="surface" parent="." instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0 )
+
+[node name="Sun" type="DirectionalLight" parent="."]
+transform = Transform( 0.92833, 0.136636, -0.345737, 0, 0.930008, 0.36754, 0.371757, -0.341199, 0.863354, 0, 0, 0 )
