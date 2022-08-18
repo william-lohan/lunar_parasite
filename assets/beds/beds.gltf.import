@@ -2,16 +2,16 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/moon_base.gltf-48ac695e85e77c98625e046d17011529.scn"
+path="res://.import/beds.gltf-c2a0d5702f96dfea2897926222bf381d.scn"
 
 [deps]
 
-source_file="res://assets/moon_base/moon_base.gltf"
-dest_files=[ "res://.import/moon_base.gltf-48ac695e85e77c98625e046d17011529.scn" ]
+source_file="res://assets/beds/beds.gltf"
+dest_files=[ "res://.import/beds.gltf-c2a0d5702f96dfea2897926222bf381d.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="StaticBody"
 nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""

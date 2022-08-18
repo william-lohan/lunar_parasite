@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/room1_rough.png-0f7f434e7c418db8491cddc9cf96f983.s3tc.stex"
-path.etc2="res://.import/room1_rough.png-0f7f434e7c418db8491cddc9cf96f983.etc2.stex"
+path.s3tc="res://.import/bed A.jpg-73cd6da88f49804b33e86189092183f4.s3tc.stex"
+path.etc2="res://.import/bed A.jpg-73cd6da88f49804b33e86189092183f4.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/moon_base/room1_rough.png"
-dest_files=[ "res://.import/room1_rough.png-0f7f434e7c418db8491cddc9cf96f983.s3tc.stex", "res://.import/room1_rough.png-0f7f434e7c418db8491cddc9cf96f983.etc2.stex" ]
+source_file="res://assets/beds/bed A.jpg"
+dest_files=[ "res://.import/bed A.jpg-73cd6da88f49804b33e86189092183f4.s3tc.stex", "res://.import/bed A.jpg-73cd6da88f49804b33e86189092183f4.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

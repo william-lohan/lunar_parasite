@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/hall_x_rough.png-cbbc25b1d51cefb3921288296a367b37.s3tc.stex"
-path.etc2="res://.import/hall_x_rough.png-cbbc25b1d51cefb3921288296a367b37.etc2.stex"
+path.s3tc="res://.import/key.jpg-806e3d6906223c2bc9d2d049957fac51.s3tc.stex"
+path.etc2="res://.import/key.jpg-806e3d6906223c2bc9d2d049957fac51.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/moon_base/hall_x_rough.png"
-dest_files=[ "res://.import/hall_x_rough.png-cbbc25b1d51cefb3921288296a367b37.s3tc.stex", "res://.import/hall_x_rough.png-cbbc25b1d51cefb3921288296a367b37.etc2.stex" ]
+source_file="res://assets/key/key.jpg"
+dest_files=[ "res://.import/key.jpg-806e3d6906223c2bc9d2d049957fac51.s3tc.stex", "res://.import/key.jpg-806e3d6906223c2bc9d2d049957fac51.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/moon_base.gltf-48ac695e85e77c98625e046d17011529.scn"
+path="res://.import/key.gltf-d230da4eb6cc80b682f5e818b0bfef0b.scn"
 
 [deps]
 
-source_file="res://assets/moon_base/moon_base.gltf"
-dest_files=[ "res://.import/moon_base.gltf-48ac695e85e77c98625e046d17011529.scn" ]
+source_file="res://assets/key/key.gltf"
+dest_files=[ "res://.import/key.gltf-d230da4eb6cc80b682f5e818b0bfef0b.scn" ]
 
 [params]
 

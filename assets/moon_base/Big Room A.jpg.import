@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/hall_x_normal.png-c9a9da520d29b53529f43a950ee9a858.s3tc.stex"
-path.etc2="res://.import/hall_x_normal.png-c9a9da520d29b53529f43a950ee9a858.etc2.stex"
+path.s3tc="res://.import/Big Room A.jpg-8ead095ac6be33d34c2e079bd0c033c1.s3tc.stex"
+path.etc2="res://.import/Big Room A.jpg-8ead095ac6be33d34c2e079bd0c033c1.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/moon_base/hall_x_normal.png"
-dest_files=[ "res://.import/hall_x_normal.png-c9a9da520d29b53529f43a950ee9a858.s3tc.stex", "res://.import/hall_x_normal.png-c9a9da520d29b53529f43a950ee9a858.etc2.stex" ]
+source_file="res://assets/moon_base/Big Room A.jpg"
+dest_files=[ "res://.import/Big Room A.jpg-8ead095ac6be33d34c2e079bd0c033c1.s3tc.stex", "res://.import/Big Room A.jpg-8ead095ac6be33d34c2e079bd0c033c1.etc2.stex" ]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=1
+compress/normal_map=0
 flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

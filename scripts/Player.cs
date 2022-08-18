@@ -23,6 +23,8 @@ public class Player : KinematicBody
 
     int accel = 7;
 
+    public bool hasKey { get; set; }
+
     public override void _Ready()
     {
         head = GetNode<Spatial>("Head");
@@ -38,6 +40,20 @@ public class Player : KinematicBody
             Vector3 rotDeg = head.RotationDegrees;
             rotDeg.x = Mathf.Clamp(rotDeg.x, -89f, 89f);
             head.RotationDegrees = rotDeg;
+        }
+        if (inputEvent is InputEventKey keyEvent)
+        {
+            if (keyEvent.IsActionPressed("ui_cancel"))
+            {
+                Input.MouseMode = Input.MouseModeEnum.Visible;
+            }
+        }
+        if (inputEvent is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.IsPressed())
+            {
+                Input.MouseMode = Input.MouseModeEnum.Captured;
+            }
         }
     }
 
@@ -80,4 +96,5 @@ public class Player : KinematicBody
 	    MoveAndSlideWithSnap(movement, snap, Vector3.Up);
 
     }
+
 }
