@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Passage_Door/Passage_Door.gltf" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Door.cs" type="Script" id=2]
+[ext_resource path="res://addons/kenney_particle_pack/star_05.png" type="Texture" id=3]
+[ext_resource path="res://addons/kenney_particle_pack/star_04.png" type="Texture" id=4]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( -0.00371766, 6.1676, 0.0991975, -3.10911, -0.00320506, -0.133709, -0.00371766, -0.00320506, -0.133709, -3.10911, -0.00320506, 0.0991975, -3.10911, 6.1676, -0.133709, -0.00371766, -0.00320506, 0.0991975, -0.00371766, 6.1676, -0.133709, -3.10911, 6.1676, 0.0991975 )
@@ -15,25 +17,40 @@ data = PoolVector3Array( 0, 6.1332, 0.5469, -3.0053, 6.1332, 0.0945, -3.0053, 6.
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 1, 0.847046, 1 )
 
+[sub_resource type="ParticlesMaterial" id=5]
+direction = Vector3( -1, -1, 0 )
+gravity = Vector3( 0, -9, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 1.0
+linear_accel_random = 0.3
+scale_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+albedo_texture = ExtResource( 4 )
+emission_enabled = true
+emission = Color( 0.929412, 0.956863, 0.498039, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 3 )
+
+[sub_resource type="PlaneMesh" id=7]
+material = SubResource( 6 )
+
 [node name="Passage_Door" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Skeleton" parent="Armature" index="0"]
-bones/0/bound_children = [ NodePath("BoneAttachment") ]
-
 [node name="BoneAttachment" parent="Armature/Skeleton" index="0"]
-transform = Transform( 1, 0, 7.10543e-15, -7.10543e-15, 0, 1, 0, -1, 0, -2.84217e-14, -1.47589, 0 )
+transform = Transform( 1, 0, 2.84217e-14, -2.84217e-14, 0, 1, 0, -1, 0, 1.83109e-07, 4.64896e-08, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="Armature/Skeleton/BoneAttachment/Cube004" index="0"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/BoneAttachment/Cube004/StaticBody" index="0"]
 shape = SubResource( 1 )
 
-[node name="Skeleton2" parent="Armature001" index="0"]
-bones/0/bound_children = [ NodePath("BoneAttachment2") ]
-
 [node name="BoneAttachment2" parent="Armature001/Skeleton2" index="0"]
-transform = Transform( 1, -8.40779e-43, 8.47033e-22, -8.47033e-22, 0, 1, 0, -1, 1.18398e-28, -7.10543e-15, -1.47589, -4.55748e-07 )
+transform = Transform( 1, 1.6663e-14, -7.10543e-15, 7.10543e-15, 0, 1, 1.6663e-14, -1, 0, 7.50515e-08, 3.07952e-07, 2.35892e-15 )
 
 [node name="StaticBody" type="StaticBody" parent="Armature001/Skeleton2/BoneAttachment2/Cube003" index="0"]
 
@@ -51,6 +68,13 @@ shape = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 transform = Transform( 4.38173, 0, 0, 0, 4.1697, 0, 0, 0, 1.95949, 0, 3.52204, 0 )
 shape = SubResource( 4 )
+
+[node name="Particles" type="Particles" parent="." index="9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93708, 4.49187, 0 )
+emitting = false
+visibility_aabb = AABB( -2.79574, -4.6814, -2.19175, 5.59148, 7.79151, 4.3835 )
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 7 )
 
 [connection signal="body_entered" from="Area" to="." method="OnBodyEnter"]
 [connection signal="body_exited" from="Area" to="." method="OnBodyExit"]

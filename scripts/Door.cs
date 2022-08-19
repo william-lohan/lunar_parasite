@@ -7,13 +7,26 @@ public class Door : Spatial
 
     private AnimationPlayer animationPlayer;
 
+    private Particles sparks;
+
     private bool canOpen = false;
+
+    private void OpenDoor()
+    {
+        animationPlayer.Play("ArmatureAction");
+        if (prompt.Text == "press [E]")
+        {
+            prompt.Text = "";
+        }
+        sparks.Emitting = true;
+    }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         prompt = GetTree().Root.GetNode<Label>("Root/HUD/Prompt");
         animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        sparks = GetNode<Particles>("Particles");
     }
 
     public override void _Input(InputEvent inputEvent)
@@ -22,11 +35,7 @@ public class Door : Spatial
         {
             if (keyEvent.IsActionPressed("USE") && canOpen)
             {
-                animationPlayer.Play("ArmatureAction");
-                if (prompt.Text == "press [E]")
-                {
-                    prompt.Text = "";
-                }
+                OpenDoor();
             }
         }
     }
