@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Passage_Door.gltf-0dfd5b38e24d13c08e4311cd02ed909f.scn"
+path="res://.import/bench.gltf-650b193e1e3ca69e8f8f23da3315a6a8.scn"
 
 [deps]
 
-source_file="res://assets/Passage_Door/Passage_Door.gltf"
-dest_files=[ "res://.import/Passage_Door.gltf-0dfd5b38e24d13c08e4311cd02ed909f.scn" ]
+source_file="res://assets/bench/bench.gltf"
+dest_files=[ "res://.import/bench.gltf-650b193e1e3ca69e8f8f23da3315a6a8.scn" ]
 
 [params]
 
@@ -19,7 +19,7 @@ nodes/storage=0
 nodes/use_legacy_names=false
 materials/location=1
 materials/storage=1
-materials/keep_on_reimport=false
+materials/keep_on_reimport=true
 meshes/octahedral_compression=true
 meshes/compress=4286
 meshes/ensure_tangents=true
