@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Monster_walk.mp3-3ff2eb4f0c160330130818381c3ff466.mp3str"
+
+[deps]
+
+source_file="res://sound/Monster_walk.mp3"
+dest_files=[ "res://.import/Monster_walk.mp3-3ff2eb4f0c160330130818381c3ff466.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

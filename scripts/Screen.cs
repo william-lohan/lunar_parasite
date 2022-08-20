@@ -3,21 +3,22 @@ using System;
 
 public class Screen : Spatial
 {
-    private Material fixMat;
+    [Export]
+    private Material stage1;
+    [Export]
+    private Material stage2;
     private MeshInstance meshInstance;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        fixMat = ResourceLoader.Load("res://assets/screen/screen_fix.material") as Material;
         meshInstance = GetNode<MeshInstance>("screen");
 
-        meshInstance.SetSurfaceMaterial(1, fixMat);
+        meshInstance.SetSurfaceMaterial(1, stage1);
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    public void change()
+    {
+        meshInstance.SetSurfaceMaterial(1, stage2);
+    }
 }

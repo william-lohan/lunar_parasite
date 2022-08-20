@@ -11,6 +11,7 @@ public class Player : KinematicBody
 
     Spatial head;
     Camera camera;
+    private FootSteps sfx;
 
     float speed = 7f;
     float cam_accel = 40f;
@@ -29,6 +30,7 @@ public class Player : KinematicBody
     {
         head = GetNode<Spatial>("Head");
         camera = head.GetChild<Camera>(0);
+        sfx = GetNode<FootSteps>("SFX");
         Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
@@ -77,6 +79,8 @@ public class Player : KinematicBody
             camera.SetAsToplevel(false);
             camera.GlobalTransform = head.GlobalTransform;
         }
+
+        sfx.checkStop();
     }
 
 
@@ -87,14 +91,17 @@ public class Player : KinematicBody
 	    var f_input = Input.GetActionStrength(BACKWARD) - Input.GetActionStrength(FORWARD);
 	    var h_input = Input.GetActionStrength(STRAFE_RIGHT) - Input.GetActionStrength(STRAFE_LEFT);
 	    direction = new Vector3(h_input, 0, f_input).Rotated(Vector3.Up, h_rot).Normalized();
-
+        if (direction != Vector3.Zero)
+        {
+            sfx.playRandom();
+        }
         snap = -GetFloorNormal();
 
         velocity = velocity.LinearInterpolate(direction * speed, accel * delta);
 	    movement = velocity;
 	
 	    MoveAndSlideWithSnap(movement, snap, Vector3.Up);
-
+        sfx.checkStop();
     }
 
 }

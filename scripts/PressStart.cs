@@ -3,12 +3,18 @@ using System;
 
 public class PressStart : Label
 {
+    private PackedScene next;
+
+    public override void _Ready()
+    {
+        next = ResourceLoader.Load<PackedScene>("res://levels/day_1.tscn");
+    }
+
     public override void _Input(InputEvent inputEvent)
     {
         if (inputEvent is InputEventKey keyEvent && keyEvent.Pressed)
         {
-            // TODO
-            GetTree().ChangeScene("res://levels/moon_base.tscn");
+            GetTree().ChangeSceneTo(next);
         }
     }
 }

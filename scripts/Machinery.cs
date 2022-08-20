@@ -1,64 +1,67 @@
 using Godot;
 using System;
 
-public class Door : Spatial
+public class Machinery : StaticBody
 {
+    [Export]
+    private bool needToFix;
+
     private Label prompt;
 
-    private AnimationPlayer animationPlayer;
+    private bool canFix = false;
 
-    private Particles sparks;
+    private string promptText = "press [E] to fix";
 
     private AudioStreamPlayer3D sfx;
 
-    private bool canOpen = false;
+    private Particles sparks;
 
-    private string promptText = "press [E] to open";
+    [Signal]
+    delegate void Fixed();
 
-    private void OpenDoor()
+    private void fix()
     {
-        animationPlayer.Play("ArmatureAction");
+        needToFix = false;
+        canFix = false;
+        GD.Print("play");
         sfx.Play();
+        sparks.Emitting = false;
         if (prompt.Text == promptText)
         {
             prompt.Text = "";
         }
-        sparks.Emitting = true;
+        EmitSignal(nameof(Fixed));
     }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         prompt = GetTree().Root.GetNode<Label>("Root/HUD/Prompt");
-        animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        sparks = GetNode<Particles>("Particles");
         sfx = GetNode<AudioStreamPlayer3D>("SFX");
+        sparks = GetNode<Particles>("Particles");
+        if (needToFix) {
+            sparks.Emitting = true;
+        }
     }
 
     public override void _Input(InputEvent inputEvent)
     {
         if (inputEvent is InputEventKey keyEvent)
         {
-            if (keyEvent.IsActionPressed("USE") && canOpen)
+            if (keyEvent.IsActionPressed("USE") && needToFix && canFix)
             {
-                OpenDoor();
+                fix();
             }
         }
     }
 
+
     public void OnBodyEnter(Node body)
     {
-        if (body is Player player)
+        if (body is Player player && needToFix)
         {
-            if (player.hasKey)
-            {
-                canOpen = true;
-                prompt.Text = promptText;
-            }
-            else
-            {
-                prompt.Text = "need key";
-            }
+            canFix = true;
+            prompt.Text = promptText;
         }
     }
 
@@ -66,7 +69,7 @@ public class Door : Spatial
     {
         if (body is Player player)
         {
-            canOpen = false;
+            canFix = false;
             if (prompt.Text == promptText)
             {
                 prompt.Text = "";

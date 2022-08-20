@@ -11,7 +11,7 @@ dest_files=[ "res://.import/chair.gltf-9ec1504fd8e0b18d6de40509a96c77ab.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="RigidBody"
 nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
@@ -19,7 +19,7 @@ nodes/storage=0
 nodes/use_legacy_names=false
 materials/location=1
 materials/storage=1
-materials/keep_on_reimport=true
+materials/keep_on_reimport=false
 meshes/octahedral_compression=true
 meshes/compress=4286
 meshes/ensure_tangents=true

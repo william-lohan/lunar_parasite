@@ -1,0 +1,17 @@
+[gd_resource type="PlaneMesh" load_steps=4 format=2]
+
+[ext_resource path="res://addons/kenney_particle_pack/star_05.png" type="Texture" id=1]
+[ext_resource path="res://addons/kenney_particle_pack/star_04.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+albedo_texture = ExtResource( 2 )
+emission_enabled = true
+emission = Color( 0.929412, 0.956863, 0.498039, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 1 )
+
+[resource]
+material = SubResource( 6 )

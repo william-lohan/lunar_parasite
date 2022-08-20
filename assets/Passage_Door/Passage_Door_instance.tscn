@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Passage_Door/Passage_Door.gltf" type="PackedScene" id=1]
 [ext_resource path="res://scripts/Door.cs" type="Script" id=2]
 [ext_resource path="res://addons/kenney_particle_pack/star_05.png" type="Texture" id=3]
 [ext_resource path="res://addons/kenney_particle_pack/star_04.png" type="Texture" id=4]
+[ext_resource path="res://sound/Door_Noise.mp3" type="AudioStream" id=5]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( -0.00371766, 6.1676, 0.0991975, -3.10911, -0.00320506, -0.133709, -0.00371766, -0.00320506, -0.133709, -3.10911, -0.00320506, 0.0991975, -3.10911, 6.1676, -0.133709, -0.00371766, -0.00320506, 0.0991975, -0.00371766, 6.1676, -0.133709, -3.10911, 6.1676, 0.0991975 )
@@ -18,7 +19,7 @@ data = PoolVector3Array( 0, 6.1332, 0.5469, -3.0053, 6.1332, 0.0945, -3.0053, 6.
 extents = Vector3( 1, 0.847046, 1 )
 
 [sub_resource type="ParticlesMaterial" id=5]
-direction = Vector3( -1, -1, 0 )
+direction = Vector3( -1, 20, 0 )
 gravity = Vector3( 0, -9, 0 )
 initial_velocity = 1.0
 initial_velocity_random = 1.0
@@ -75,6 +76,10 @@ emitting = false
 visibility_aabb = AABB( -2.79574, -4.6814, -2.19175, 5.59148, 7.79151, 4.3835 )
 process_material = SubResource( 5 )
 draw_pass_1 = SubResource( 7 )
+
+[node name="SFX" type="AudioStreamPlayer3D" parent="." index="10"]
+stream = ExtResource( 5 )
+bus = "SFX"
 
 [connection signal="body_entered" from="Area" to="." method="OnBodyEnter"]
 [connection signal="body_exited" from="Area" to="." method="OnBodyExit"]

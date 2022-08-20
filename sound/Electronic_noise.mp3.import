@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Electronic_noise.mp3-b55f1e9bcf1568c1a48373cccd0ca0db.mp3str"
+
+[deps]
+
+source_file="res://sound/Electronic_noise.mp3"
+dest_files=[ "res://.import/Electronic_noise.mp3-b55f1e9bcf1568c1a48373cccd0ca0db.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

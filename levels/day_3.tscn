@@ -1,0 +1,139 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/surface/surface.gltf" type="PackedScene" id=1]
+[ext_resource path="res://levels/moon_base_lib.tres" type="MeshLibrary" id=2]
+[ext_resource path="res://assets/Passage_Door/Passage_Door_instance.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/key/key.gltf" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Key.cs" type="Script" id=6]
+[ext_resource path="res://assets/table/table_instance.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/beds/beds_instance.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/machinery/machinery_instance.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sound/Kirk Osamayo - (Ambient) Horror Sounds.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/screen/screen_instance.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/title.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/chair/chair_instance.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/bench/bench_instance.tscn" type="PackedScene" id=14]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="Root" type="Spatial"]
+
+[node name="surface" parent="." instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0 )
+
+[node name="Sun" type="DirectionalLight" parent="."]
+transform = Transform( 0.92833, 0.136636, -0.345737, 0, 0.930008, 0.36754, 0.371757, -0.341199, 0.863354, 0, 0, 0 )
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh_library = ExtResource( 2 )
+cell_size = Vector3( 9, 3, 9 )
+data = {
+"cells": PoolIntArray( 65535, 0, 4, 1, 1, 1441792, 65535, 1, 1441793, 0, 2, 1048580, 1, 2, 655363, 2, 2, 655360, 65534, 2, 0, 65535, 2, 655363, 0, 65535, 655360, 65534, 65535, 0, 65535, 65535, 3 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="bench" parent="GridMap" instance=ExtResource( 14 )]
+transform = Transform( -3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -8.25566, -2.38419e-07, 14.8131 )
+
+[node name="bench2" parent="GridMap" instance=ExtResource( 14 )]
+transform = Transform( -3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -13.4611, -2.38419e-07, 19.9792 )
+
+[node name="bench3" parent="GridMap" instance=ExtResource( 14 )]
+transform = Transform( -3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -13.4542, -3.57628e-07, 24.8678 )
+
+[node name="chair" parent="GridMap" instance=ExtResource( 13 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 5.74234, 0, -5.22715 )
+
+[node name="chair2" parent="GridMap" instance=ExtResource( 13 )]
+transform = Transform( 0.25745, 0, 0.704429, 0, 0.75, 0, -0.704429, 0, 0.25745, -2.31308, 0, 13.7692 )
+
+[node name="chair3" parent="GridMap" instance=ExtResource( 13 )]
+transform = Transform( 0.25745, 0, 0.704429, 0, 0.75, 0, -0.704429, 0, 0.25745, 22.1731, 0, 24.7619 )
+
+[node name="beds" parent="GridMap" instance=ExtResource( 8 )]
+transform = Transform( 0.770046, 0, 0, 0, 0.770046, 0, 0, 0, 0.770046, -13.8978, -0.00311971, -8.28247 )
+next = ExtResource( 12 )
+
+[node name="table" parent="GridMap" instance=ExtResource( 7 )]
+transform = Transform( -3.27658e-08, 0, -0.749594, 0, 0.749594, 0, 0.749594, 0, -3.27658e-08, 7.81776, 0, -4.71971 )
+
+[node name="table2" parent="GridMap" instance=ExtResource( 7 )]
+transform = Transform( -3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-08, -1.30366, 0, 13.8313 )
+
+[node name="table3" parent="GridMap" instance=ExtResource( 7 )]
+transform = Transform( -0.75, 0, -6.55671e-08, 0, 0.75, 0, 6.55671e-08, 0, -0.75, 22.7491, 0, 26.0197 )
+
+[node name="machinery" parent="GridMap" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28614, 0.0755336, -8.33756 )
+
+[node name="machinery2" parent="GridMap" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3398, 0.0755336, 19.5855 )
+
+[node name="OmniLight" type="OmniLight" parent="GridMap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52622, 1.303, -4.62981 )
+omni_range = 13.414
+omni_attenuation = 0.707107
+
+[node name="OmniLight6" type="OmniLight" parent="GridMap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5603, 1.303, 13.3741 )
+light_color = Color( 1, 0, 0, 1 )
+omni_range = 4.658
+omni_attenuation = 0.683021
+
+[node name="OmniLight2" type="OmniLight" parent="GridMap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79682, 1.72247, -4.47449 )
+
+[node name="OmniLight3" type="OmniLight" parent="GridMap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0388, 2.43709, -4.87131 )
+
+[node name="OmniLight4" type="OmniLight" parent="GridMap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52622, 1.303, 13.3982 )
+
+[node name="OmniLight5" type="OmniLight" parent="GridMap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52622, 1.303, 7.32626 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5631, 2, -4.77797 )
+
+[node name="Passage_Door" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.358689, 0, 0, 0, 0.358689, 0, 0, 0, 0.358689, -4.46502, 0.980253, 8.78179 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67794, 1.96279, -1.54881 )
+script = ExtResource( 6 )
+
+[node name="key" parent="Area" instance=ExtResource( 5 )]
+transform = Transform( 0.662733, 0.596603, 0.452603, -0.527675, 0.800899, -0.283055, -0.531361, -0.0512373, 0.845594, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="HUD" type="MarginContainer" parent="."]
+anchor_top = 0.75
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 10.0
+margin_bottom = 10.0
+
+[node name="Prompt" type="Label" parent="HUD"]
+margin_top = 67.0
+margin_right = 9.0
+margin_bottom = 82.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "`"
+valign = 2
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+bus = "Background"
+
+[node name="screen" parent="." instance=ExtResource( 11 )]
+transform = Transform( -2.36966, 0, -2.07162e-07, 0, 2.36966, 0, 8.74228e-08, 0, -1, -13.077, 2.43662, -0.0534027 )
