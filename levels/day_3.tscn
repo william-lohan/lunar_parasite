@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/surface/surface.gltf" type="PackedScene" id=1]
 [ext_resource path="res://levels/moon_base_lib.tres" type="MeshLibrary" id=2]
 [ext_resource path="res://assets/Passage_Door/Passage_Door_instance.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/computer/computer_instance.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/cup/cup.gltf" type="PackedScene" id=6]
 [ext_resource path="res://assets/table/table_instance.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/beds/beds_instance.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/machinery/machinery_instance.tscn" type="PackedScene" id=9]
@@ -131,3 +132,6 @@ interactive = true
 message = "Rescue Sq inbound,
 
 Arival EST 24Hrs"
+
+[node name="cup" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.70215, 2.09902, -5.79509 )

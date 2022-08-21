@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/surface/surface.gltf" type="PackedScene" id=1]
 [ext_resource path="res://levels/moon_base_lib.tres" type="MeshLibrary" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/bench/bench_instance.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/monster/eating.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/computer/computer_instance.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/cup/cup.gltf" type="PackedScene" id=17]
 
 [node name="Root" type="Spatial"]
 
@@ -136,5 +137,8 @@ transform = Transform( 0.186575, 0, 0.463886, 0, 0.5, 0, -0.463886, 0, 0.186575,
 
 [node name="computer" parent="." instance=ExtResource( 16 )]
 transform = Transform( -8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 7.68606, 2.0938, -4.71087 )
+
+[node name="cup" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.70215, 2.09902, -5.79509 )
 
 [connection signal="Fixed" from="GridMap/machinery" to="screen" method="change"]

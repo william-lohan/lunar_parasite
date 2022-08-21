@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/surface/surface.gltf" type="PackedScene" id=1]
 [ext_resource path="res://levels/moon_base_lib.tres" type="MeshLibrary" id=2]
@@ -14,8 +14,16 @@
 [ext_resource path="res://levels/title.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/chair/chair_instance.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/bench/bench_instance.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/computer/computer_instance.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/bin/bin.gltf" type="PackedScene" id=16]
+[ext_resource path="res://assets/cup/cup.gltf" type="PackedScene" id=17]
+[ext_resource path="res://assets/monster/roar.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scripts/MonsterDay4.cs" type="Script" id=19]
+[ext_resource path="res://assets/screen/screen_survive.material" type="Material" id=20]
 
 [sub_resource type="BoxShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
 
 [node name="Root" type="Spatial"]
 
@@ -92,13 +100,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79682, 1.72247, -4.47449 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0388, 2.43709, -4.87131 )
 
 [node name="OmniLight4" type="OmniLight" parent="GridMap"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52622, 1.303, 13.3982 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48136, 1.40747, 13.5039 )
 
 [node name="OmniLight5" type="OmniLight" parent="GridMap"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52622, 1.303, 7.32626 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5631, 2, -4.77797 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.5631, 2, -4.77797 )
 
 [node name="Passage_Door" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.358689, 0, 0, 0, 0.358689, 0, 0, 0, 0.358689, -4.46502, 0.980253, 8.78179 )
@@ -122,9 +130,9 @@ margin_right = 10.0
 margin_bottom = 10.0
 
 [node name="Prompt" type="Label" parent="HUD"]
-margin_top = 67.0
+margin_top = 82.0
 margin_right = 9.0
-margin_bottom = 82.0
+margin_bottom = 97.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "`"
@@ -137,3 +145,32 @@ bus = "Background"
 
 [node name="screen" parent="." instance=ExtResource( 11 )]
 transform = Transform( -2.36966, 0, -2.07162e-07, 0, 2.36966, 0, 8.74228e-08, 0, -1, -13.077, 2.43662, -0.0534027 )
+stage1 = ExtResource( 20 )
+
+[node name="computer2" parent="." instance=ExtResource( 15 )]
+transform = Transform( -0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 22.7236, 2.09527, 25.9999 )
+
+[node name="bin" parent="." instance=ExtResource( 16 )]
+transform = Transform( -0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 24.6407, 1, 25.9523 )
+
+[node name="cup" parent="." instance=ExtResource( 17 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.70215, 2.09902, -5.79509 )
+
+[node name="trigger" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="trigger"]
+transform = Transform( 2.11129, 0, 0, 0, 2.11129, 0, 0, 0, 1, -4.77325, 2.3296, 2.32365 )
+shape = SubResource( 2 )
+
+[node name="computer" parent="." instance=ExtResource( 15 )]
+transform = Transform( -8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 7.68606, 2.0938, -4.71087 )
+interactive = true
+message = "Rescue Sq Here"
+isDay4 = true
+
+[node name="monster" parent="." instance=ExtResource( 18 )]
+transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -5.11441, 1, 14.1213 )
+script = ExtResource( 19 )
+
+[connection signal="body_entered" from="trigger" to="Passage_Door" method="Day4Event"]
+[connection signal="body_entered" from="trigger" to="monster" method="Day4Event"]

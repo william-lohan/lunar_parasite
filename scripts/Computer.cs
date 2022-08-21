@@ -7,6 +7,8 @@ public class Computer : Spatial
     bool interactive = false;
     [Export(PropertyHint.MultilineText)]
     string message = "";
+    [Export]
+    bool isDay4 = false;
     private Label prompt;
     private bool canUse = false;
     private string promptText = "press [E] to use";
@@ -52,6 +54,10 @@ public class Computer : Spatial
             if (prompt.Text == promptText)
             {
                 prompt.Text = "";
+            }
+            if (isDay4)
+            {
+                GetTree().ChangeScene("res://levels/win.tscn");
             }
         }
     }

@@ -15,6 +15,8 @@ public class Door : Spatial
 
     private string promptText = "press [E] to open";
 
+    private bool isDay4Event = false;
+
     private void OpenDoor()
     {
         animationPlayer.Play("ArmatureAction");
@@ -55,6 +57,10 @@ public class Door : Spatial
                 canOpen = true;
                 prompt.Text = promptText;
             }
+            else if (isDay4Event)
+            {
+                GetTree().ChangeScene("res://levels/end.tscn");
+            }
             else
             {
                 prompt.Text = "need key";
@@ -73,4 +79,14 @@ public class Door : Spatial
             }
         }
     }
+
+    public void Day4Event(Node body)
+    {
+        if (body is Player player)
+        {
+            isDay4Event = true;
+            OpenDoor();
+        }
+    }
+
 }
