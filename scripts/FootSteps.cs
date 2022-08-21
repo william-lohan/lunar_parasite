@@ -19,7 +19,6 @@ public class FootSteps : AudioStreamPlayer
 
     public void playRandom()
     {
-        GD.Print("play");
         if (!Playing || queuedStop == 0)
         {
             int index = gen.Next(0, parts.Length);

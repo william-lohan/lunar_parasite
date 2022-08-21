@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Roar.mp3-0dfbcfa1ef036ec365a78b7b49d37352.mp3str"
+
+[deps]
+
+source_file="res://sound/Roar.mp3"
+dest_files=[ "res://.import/Roar.mp3-0dfbcfa1ef036ec365a78b7b49d37352.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

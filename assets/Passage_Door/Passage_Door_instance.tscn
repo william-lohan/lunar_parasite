@@ -42,6 +42,9 @@ material = SubResource( 6 )
 [node name="Passage_Door" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Skeleton" parent="Armature" index="0"]
+bones/0/bound_children = [ NodePath("BoneAttachment") ]
+
 [node name="BoneAttachment" parent="Armature/Skeleton" index="0"]
 transform = Transform( 1, 0, 2.84217e-14, -2.84217e-14, 0, 1, 0, -1, 0, 1.83109e-07, 4.64896e-08, 0 )
 
@@ -49,6 +52,9 @@ transform = Transform( 1, 0, 2.84217e-14, -2.84217e-14, 0, 1, 0, -1, 0, 1.83109e
 
 [node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/BoneAttachment/Cube004/StaticBody" index="0"]
 shape = SubResource( 1 )
+
+[node name="Skeleton2" parent="Armature001" index="0"]
+bones/0/bound_children = [ NodePath("BoneAttachment2") ]
 
 [node name="BoneAttachment2" parent="Armature001/Skeleton2" index="0"]
 transform = Transform( 1, 1.6663e-14, -7.10543e-15, 7.10543e-15, 0, 1, 1.6663e-14, -1, 0, 7.50515e-08, 3.07952e-07, 2.35892e-15 )

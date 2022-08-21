@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/surface/surface.gltf" type="PackedScene" id=1]
 [ext_resource path="res://levels/moon_base_lib.tres" type="MeshLibrary" id=2]
@@ -16,8 +16,14 @@
 [ext_resource path="res://assets/bench/bench_instance.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/screen/screen_fix.material" type="Material" id=15]
 [ext_resource path="res://assets/screen/screen_sleep.material" type="Material" id=16]
+[ext_resource path="res://assets/monster/walking.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scripts/MonsterDay2Move.cs" type="Script" id=18]
+[ext_resource path="res://assets/computer/computer_instance.tscn" type="PackedScene" id=19]
 
 [sub_resource type="BoxShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 4.92324, 2.87535, 1 )
 
 [node name="Root" type="Spatial"]
 
@@ -25,7 +31,7 @@
 transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="Sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.92833, 0.136636, -0.345737, 0, 0.930008, 0.36754, 0.371757, -0.341199, 0.863354, 0, 0, 0 )
+transform = Transform( -0.643189, 0.281429, -0.712114, 0, 0.930008, 0.367541, 0.765708, 0.236398, -0.59817, 0, 0, 0 )
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -101,7 +107,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52622, 1.303, 13.3982 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52622, 1.303, 7.32626 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5631, 2, -4.77797 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.5631, 2, -4.77797 )
+isDay2 = true
 
 [node name="Passage_Door" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.358689, 0, 0, 0, 0.358689, 0, 0, 0, 0.358689, -4.46502, 0.980253, 8.78179 )
@@ -125,9 +132,9 @@ margin_right = 10.0
 margin_bottom = 10.0
 
 [node name="Prompt" type="Label" parent="HUD"]
-margin_top = 67.0
+margin_top = 82.0
 margin_right = 9.0
-margin_bottom = 82.0
+margin_bottom = 97.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "`"
@@ -143,4 +150,20 @@ transform = Transform( -2.36966, 0, -2.07162e-07, 0, 2.36966, 0, 8.74228e-08, 0,
 stage1 = ExtResource( 15 )
 stage2 = ExtResource( 16 )
 
+[node name="monster" parent="." instance=ExtResource( 17 )]
+transform = Transform( -2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 2, 1, 22.5 )
+script = ExtResource( 18 )
+
+[node name="trigger" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62375, 1.22954, 13.3074 )
+
+[node name="CollisionShape" type="CollisionShape" parent="trigger"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.845025 )
+shape = SubResource( 2 )
+
+[node name="computer" parent="." instance=ExtResource( 19 )]
+transform = Transform( -8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 7.68606, 2.0938, -4.71087 )
+
 [connection signal="Fixed" from="GridMap/machinery2" to="screen" method="change"]
+[connection signal="body_entered" from="trigger" to="Player" method="StartDay2Event"]
+[connection signal="body_entered" from="trigger" to="monster" method="StartMove"]
